@@ -1,4 +1,4 @@
-function [y,error]=simularFabricas(num_iteraciones)
+function [y,error]=simularFabricas2(num_iteraciones)
     %Definir cuales son los articulos defectuosos de cada fabrica
     %Fabrica 1 produce 200
     %Fabrica 2 produce 100
@@ -9,7 +9,7 @@ function [y,error]=simularFabricas(num_iteraciones)
     def.total=[def1 def2+200 def3+300];
     contar=0;
     for i=1:num_iteraciones
-      contar=contar+sum(def.total==randi([1 400]));
+      contar=contar+ismember(randi([1 400]),def.total);
     endfor
     y=contar/num_iteraciones;
     error=abs(y-.025)

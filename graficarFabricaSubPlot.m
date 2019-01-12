@@ -1,7 +1,6 @@
 function [pa,pb]=graficarFabricaSubPlot(vector)
     num_graficas=size(vector)(2)
     if num_graficas==1
-      disp('Entro');
       num_iteraciones=vector
       graficarFabrica(num_iteraciones)
     else
@@ -14,7 +13,7 @@ function [pa,pb]=graficarFabricaSubPlot(vector)
       
       for k=1:num_graficas
         promedio=0;
-        [p,error]=simularFabricas(vector(k));
+        [p,error]=simularFabricas2(vector(k));
         Y=[p,0.025];
         xlabel('Eventos');
         ylabel('Probabilidad');
