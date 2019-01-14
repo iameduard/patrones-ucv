@@ -91,6 +91,9 @@
  contour(X,Y,ZT1);
  scatter(Y2(1,:),Y2(2,:),'+');
  contour(X,Y,ZT2);
+ %Frontera de Decision
+ XX=frontera_decision_sigmas_const_identidad(mu1,mu2);
+ line(XX(1,:),XX(2,:))
  title({"Clasificador Nro. 1 SIGMA=[1 0;0 1]"});
  hold off;
  %
@@ -100,6 +103,9 @@
  contour(X,Y,ZT3);
  scatter(Y4(1,:),Y4(2,:),'+');
  contour(X,Y,ZT4);
+ %Frontera de Decision
+ XX=frontera_decision_sigmas_iguales(mu3,mu4);
+ line(XX(1,:),XX(2,:))
  title({"Clasificador Nro. 2 SIGMA=[1 0.5;0.5 1]"});
  hold off;
  %Regla de decision.
