@@ -93,7 +93,7 @@
  contour(X,Y,ZT2);
  %Frontera de Decision
  XX=frontera_decision_sigmas_const_identidad(mu1,mu2);
- line(XX(1,:),XX(2,:))
+ line(XX(1,:),XX(2,:),"linestyle", "--", "color", "r")
  title({"Clasificador Nro. 1 SIGMA=[1 0;0 1]"});
  hold off;
  %
@@ -105,7 +105,7 @@
  contour(X,Y,ZT4);
  %Frontera de Decision
  XX=frontera_decision_sigmas_iguales(mu3,mu4);
- line(XX(1,:),XX(2,:))
+ line(XX(1,:),XX(2,:),"linestyle", "--", "color", "r")
  title({"Clasificador Nro. 2 SIGMA=[1 0.5;0.5 1]"});
  hold off;
  %Regla de decision.
@@ -115,3 +115,6 @@
  %clase2_2: es clase 2 y asigno clase 2
  [clase1_1,clase1_2]=regla_dec_sigma_iguales_diagonal(Y1,mu1,mu2,[],[]);
  [clase2_1,clase2_2]=regla_dec_sigma_iguales_diagonal(Y2,mu1,mu2,[],[]);
+ %
+ [clase1_1,clase1_2]=regla_dec_sigma_iguales(Y3,S3,mu1,mu2,[],[]);
+ [clase2_1,clase2_2]=regla_dec_sigma_iguales(Y4,S4,mu1,mu2,[],[]);
