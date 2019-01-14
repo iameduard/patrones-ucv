@@ -73,32 +73,37 @@
  disp('Matriz de Covarianza');
  disp(suma/N);
  %
-  %hold on;
+ %Grafica de generacion de la distribucion normal con 1000 puntos.
+  npuntos=1000;
+ [v1,d1,q1,z1,y1]=generar_normal_bivariable(S1,mu1,npuntos);
+ [v2,d2,q2,z2,y2]=generar_normal_bivariable(S2,mu2,npuntos);
+ [v3,d3,q3,z3,y3]=generar_normal_bivariable(S3,mu3,npuntos);
+ [v4,d4,q4,z4,y4]=generar_normal_bivariable(S4,mu4,npuntos);
  subplot(2,2,1);
  hold on;
- scatter(Y1(1,:),Y1(2,:),'+');
- contour(X,Y,ZT1);
+ scatter(y1(1,:),y1(2,:),'+');
+ %contour(X,Y,ZT1);
  title({"Fd Normal"});
  hold off;
  %
  subplot(2,2,2);
  hold on;
- scatter(Y2(1,:),Y2(2,:),'+');
- contour(X,Y,ZT2);
+ scatter(y2(1,:),y2(2,:),'+');
+ %contour(X,Y,ZT2);
  title({"Fd Normal"});
  hold off;
  %
  subplot(2,2,3);
  hold on;
- scatter(Y3(1,:),Y3(2,:),'+');
- contour(X,Y,ZT3);
+ scatter(y3(1,:),y3(2,:),'+');
+ %contour(X,Y,ZT3);
  title({"Fd Normal"});
  hold off;
  %
  subplot(2,2,4);
  hold on;
- scatter(Y4(1,:),Y4(2,:),'+');
- contour(X,Y,ZT4);
+ scatter(y4(1,:),y4(2,:),'+');
+ %contour(X,Y,ZT4);
  title({"Fd Normal"});
  hold off;
  

@@ -55,7 +55,8 @@
  subplot(1,2,2);
  hist3(Z4');
  title({"Generado SIGMA=[1 0.5 ; 0.5 1] MU=[1;1]"});
- %
+ %Graficar los puntos generados para las cuatro distribuciones normales bivaridas...
+ graficar_muestra_normal(S1,S2,S3,S4,mu1,mu2,mu3,mu4,1000)
  %Clasificador Bayes.
    %Regla de decision.
    %clase1_1: es clase 1 y asigno clase 1
