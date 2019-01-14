@@ -72,6 +72,35 @@
  disp(mu1);
  disp('Matriz de Covarianza');
  disp(suma/N);
+ %
+  %hold on;
+ subplot(2,2,1);
+ hold on;
+ scatter(Y1(1,:),Y1(2,:),'+');
+ contour(X,Y,ZT1);
+ title({"Fd Normal"});
+ hold off;
+ %
+ subplot(2,2,2);
+ hold on;
+ scatter(Y2(1,:),Y2(2,:),'+');
+ contour(X,Y,ZT2);
+ title({"Fd Normal"});
+ hold off;
+ %
+ subplot(2,2,3);
+ hold on;
+ scatter(Y3(1,:),Y3(2,:),'+');
+ contour(X,Y,ZT3);
+ title({"Fd Normal"});
+ hold off;
+ %
+ subplot(2,2,4);
+ hold on;
+ scatter(Y4(1,:),Y4(2,:),'+');
+ contour(X,Y,ZT4);
+ title({"Fd Normal"});
+ hold off;
  
    
  

@@ -8,10 +8,10 @@
  S2=[1 0 ; 0 1];
  S3=[1 0.5 ; 0.5 1];
  S4=[1 0.5 ; 0.5 1];
- mu1=[0;0];
- mu2=[1;1];
- mu3=[0;0];
- mu4=[1;1];
+ mu1=[0;0];  %mu1=[0;0];
+ mu2=[1;1];  %mu2=[1;1];
+ mu3=[0;0];  %mu3=[1,3];
+ mu4=[1;1];  %mu4=[0;1];
  npuntos=100;
  %Generar 100 muestras de cada clase...
  [V1,D1,Q1,Z1,Y1]=generar_normal_bivariable(S1,mu1,npuntos);
@@ -24,35 +24,6 @@
  ZT3 = p_x_wi_multidimen2(X, Y,S3,mu3);
  ZT4 = p_x_wi_multidimen2(X, Y,S4,mu4);
  
- %hold on;
- subplot(2,2,1);
- hold on;
- scatter(Y1(1,:),Y1(2,:),'+');
- contour(X,Y,ZT1);
- title({"Fd Normal"});
- hold off;
- %
- subplot(2,2,2);
- hold on;
- scatter(Y2(1,:),Y2(2,:),'+');
- contour(X,Y,ZT2);
- title({"Fd Normal"});
- hold off;
- %
- subplot(2,2,3);
- hold on;
- scatter(Y3(1,:),Y3(2,:),'+');
- contour(X,Y,ZT3);
- title({"Fd Normal"});
- hold off;
- %
- subplot(2,2,4);
- hold on;
- scatter(Y4(1,:),Y4(2,:),'+');
- contour(X,Y,ZT4);
- title({"Fd Normal"});
- hold off;
-  %hold off;
  %Ploteo de la distribucion teorica y la distribucion generada..
  range = linspace (-5, 5, 100);
  [X, Y] = meshgrid (range, range);
@@ -92,8 +63,8 @@
  scatter(Y2(1,:),Y2(2,:),'+');
  contour(X,Y,ZT2);
  %Frontera de Decision
- XX=frontera_decision_sigmas_const_identidad(mu1,mu2);
- line(XX(1,:),XX(2,:),"linestyle", "--", "color", "r")
+ XX1=frontera_decision_sigmas_const_identidad(mu1,mu2);
+ line(XX1(1,:),XX1(2,:),"linestyle", "--", "color", "r")
  title({"Clasificador Nro. 1 SIGMA=[1 0;0 1]"});
  hold off;
  %
@@ -104,8 +75,9 @@
  scatter(Y4(1,:),Y4(2,:),'+');
  contour(X,Y,ZT4);
  %Frontera de Decision
- XX=frontera_decision_sigmas_iguales(mu3,mu4);
- line(XX(1,:),XX(2,:),"linestyle", "--", "color", "r")
+ XX2=frontera_decision_sigmas_iguales(S3,mu3,mu4);
+ line(XX2(1,:),XX2(2,:),"linestyle", "--", "color", "r")
+ line(XX1(1,:),XX1(2,:),"linestyle", "--", "color", "b")
  title({"Clasificador Nro. 2 SIGMA=[1 0.5;0.5 1]"});
  hold off;
  %Regla de decision.
@@ -115,6 +87,10 @@
  %clase2_2: es clase 2 y asigno clase 2
  [clase1_1,clase1_2]=regla_dec_sigma_iguales_diagonal(Y1,mu1,mu2,[],[]);
  [clase2_1,clase2_2]=regla_dec_sigma_iguales_diagonal(Y2,mu1,mu2,[],[]);
+ error1=(length(clase1_2)+length(clase2_1))/ ...
+        (length(clase1_1)+length(clase1_2)+length(clase2_1)+length(clase2_2));
  %
  [clase1_1,clase1_2]=regla_dec_sigma_iguales(Y3,S3,mu1,mu2,[],[]);
  [clase2_1,clase2_2]=regla_dec_sigma_iguales(Y4,S4,mu1,mu2,[],[]);
+ error2=(length(clase1_2)+length(clase2_1))/ ...
+        (length(clase1_1)+length(clase1_2)+length(clase2_1)+length(clase2_2));
