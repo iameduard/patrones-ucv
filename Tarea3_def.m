@@ -102,3 +102,10 @@
  contour(X,Y,ZT4);
  title({"Clasificador Nro. 2 SIGMA=[1 0.5;0.5 1]"});
  hold off;
+ %Regla de decision.
+ %clase1_1: es clase 1 y asigno clase 1
+ %clase1_2: es clase 1 y asigno clase 2 (error)
+ %clase2_1: es clase 2 y asigno clase 1 (error)
+ %clase2_2: es clase 2 y asigno clase 2
+ [clase1_1,clase1_2]=regla_dec_sigma_iguales_diagonal(Y1,mu1,mu2,[],[]);
+ [clase2_1,clase2_2]=regla_dec_sigma_iguales_diagonal(Y2,mu1,mu2,[],[]);
