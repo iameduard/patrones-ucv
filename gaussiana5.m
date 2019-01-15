@@ -1,4 +1,4 @@
-function gaussiana3(n,sigma1,sigma2,corte)
+function gaussiana5(n,sigma1,sigma2,corte)
 #tarea2:
 #Eduardo Jimenez
 #Dos distribuciones gaussianas.
@@ -40,32 +40,14 @@ z1=p_x_wi(x,sigma1,mu1,c1);z2=p_x_wi(x,sigma2,mu2,c2);
 hold on;
 plot(x,z1);plot(x,z2);
 #Data de prueba..
+norm1=normrnd(mu1,sigma1,[1,1000]);
+norm2=normrnd(mu2,sigma2,[1,1000]);
+#Frontera de Clasificacion.
 clasificador=corte;
 eps1=0.5;
-cont=0;
-norm1=[];
-norm2=[];
-for i=1:10000
-  n1=normrnd(mu1,sigma1);
-  if ((n1>clasificador-eps1) && (n1< clasificador+eps1))
-    cont+=1;
-    norm1=[norm1, n1];
-  endif
-  if (cont>=n)
-     break
-  endif
-endfor
-cont=0;
-for i=1:10000
-  n2=normrnd(mu2,sigma2);
-  if ((n2>clasificador-eps1) && (n2< clasificador+eps1))
-    cont+=1;
-    norm2=[norm2, n2];
-  endif
-  if (cont>=n)
-     break
-  endif
-endfor
+norm1=norm1(norm1>clasificador-eps1 & norm1< clasificador+eps1)(1:n);
+norm2=norm2(norm2>clasificador-eps1 & norm2< clasificador+eps1)(1:n);
+#
 plot(norm1,p_x_wi(norm1,sigma1,mu1,c1),'x');
 plot(norm2,p_x_wi(norm2,sigma2,mu2,c2),'o');
 #Clasificacion usando la frontera de clasificacion:

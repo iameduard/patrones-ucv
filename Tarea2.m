@@ -6,7 +6,7 @@
   #Si sigma1=sigma2=sigma
   #x=(55-0.81093*sigma^2)/10
   pkg load statistics;
-  graficarGaussiana2D(10,1,1,5.4189);
-  graficarGaussiana2D(10,2,2,5.1756);
-  graficarGaussiana2D(10,4,4,4.2025);
+  graficarGaussiana2D(5,1,1,5.4189);
+  graficarGaussiana2D(5,2,2,5.1756);
+  graficarGaussiana2D(5,4,4,4.2025);
 
